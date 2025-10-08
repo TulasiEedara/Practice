@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment - ShopEase</title>
+<style>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+  margin: 0;
+}
+header {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
+.container {
+  max-width: 500px;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+label { font-weight: bold; }
+input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+.summary {
+  background: #f9f9f9;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1rem;
+}
+button {
+  background: #2575fc;
+  color: white;
+  border: none;
+  padding: 0.8rem;
+  width: 100%;
+  border-radius: 5px;
+  margin-top: 1rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+button:hover {
+  background: #6a11cb;
+}
+</style>
+</head>
+<body>
+
+<header><h1>Payment</h1></header>
+
+<div class="container">
+  <div class="summary">
+    <p><b>Product:</b> <span id="prod"></span></p>
+    <p><b>Total:</b> $<span id="amount"></span></p>
+  </div>
+
+  <label>Cardholder Name</label>
+  <input type="text" id="name" placeholder="John Doe">
+  <label>Card Number</label>
+  <input type="text" id="card" maxlength="16" placeholder="1234 5678 9012 3456">
+  <label>Expiry Date</label>
+  <input type="month" id="expiry">
+  <label>CVV</label>
+  <input type="password" id="cvv" maxlength="3" placeholder="123">
+  <button onclick="confirmPayment()">Pay Now</button>
+</div>
+
+<script>
+document.getElementById("prod").innerText = localStorage.getItem("product");
+document.getElementById("amount").innerText = localStorage.getItem("total");
+
+function confirmPayment() {
+  const name = document.getElementById("name").value.trim();
+  const card = document.getElementById("card").value.trim();
+  const cvv = document.getElementById("cvv").value.trim();
+
+  if (!name || card.length !== 16 || cvv.length !== 3) {
+    alert("Please fill all payment details correctly!");
+    return;
+  }
+  location.href = "thankyou.html";
+}
+</script>
+</body>
+</html>
