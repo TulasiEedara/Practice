@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShopEase - Home</title>
+<style>
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f0f2f5;
+}
+header {
+  background: linear-gradient(135deg, #6a11cb, #2575fc);
+  color: white;
+  text-align: center;
+  padding: 1.5rem;
+}
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+.products {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 2rem;
+}
+.card {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  width: 250px;
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card img {
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.card-content {
+  padding: 1rem;
+}
+button {
+  background: #2575fc;
+  color: white;
+  border: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  background: #6a11cb;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>ShopEase</h1>
+  <p>Your One-Stop Online Store</p>
+</header>
+
+<section class="products">
+  <div class="card">
+    <img src="https://via.placeholder.com/250x150?text=Headphones" alt="Headphones">
+    <div class="card-content">
+      <h3>Wireless Headphones</h3>
+      <p>$50</p>
+      <button onclick="shopNow('Headphones', 50)">Buy Now</button>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/250x150?text=Smartwatch" alt="Smartwatch">
+    <div class="card-content">
+      <h3>Smartwatch</h3>
+      <p>$80</p>
+      <button onclick="shopNow('Smartwatch', 80)">Buy Now</button>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://via.placeholder.com/250x150?text=Speaker" alt="Speaker">
+    <div class="card-content">
+      <h3>Bluetooth Speaker</h3>
+      <p>$40</p>
+      <button onclick="shopNow('Speaker', 40)">Buy Now</button>
+    </div>
+  </div>
+</section>
+
+<script>
+function shopNow(product, price) {
+  localStorage.setItem("product", product);
+  localStorage.setItem("price", price);
+  location.href = "checkout.html";
+}
+</script>
+
+</body>
+</html>
